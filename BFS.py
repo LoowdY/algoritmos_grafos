@@ -9,16 +9,16 @@ Professor: Daniel Leal
 Matéria: Teoria dos Grafos
 '''
 
-#definição de função para busca em largura
+# Definição de função para busca em largura
 def busca_em_largura(grafo, inicio, fim):
     visitados = set()
     fila = [[inicio]]
-    #trabalhando-se em cima da estrutura de dados de fila
+    # Trabalhando-se em cima da estrutura de dados de fila
     while fila:
         caminho = fila.pop(0)
         no = caminho[-1]
-        #criando logica por tras do algoritmo BFS
-        #busca em largura ( filhos - filhos)
+        # Criando lógica por trás do algoritmo BFS
+        # Busca em largura (filhos - filhos)
         if no not in visitados:
             vizinhos = grafo[no]
             for vizinho in vizinhos:
@@ -27,50 +27,41 @@ def busca_em_largura(grafo, inicio, fim):
                 fila.append(novo_caminho)
                 if vizinho == fim:
                     return novo_caminho
-            #adiciona nó
+            # Adiciona nó
             visitados.add(no)
     return None
 
-
-
 '''
 Explicação do grafo. O Grafo a seguir foi implementado da seguinte maneira:
-1 - Utilizou-se o formato de dicionário. Cada nó pai é uma cahve do dicionário. Seus filhos, na mesma linha
-estão representados como elementos de uma lista (estrutura de dados do python). Os filhos
+1 - Utilizou-se o formato de dicionário. Cada nó pai é uma chave do dicionário. Seus filhos, na mesma linha,
+estão representados como elementos de uma lista (estrutura de dados do Python). Os filhos
 e seus respectivos nós filhos são especificados nas linhas subsequentes como chaves do dicionário.
-Por fim, vale citar que as chaves que não possuem filho, ou seja, possuem uma lista vazia como valor crrespondete,
+Por fim, vale citar que as chaves que não possuem filho, ou seja, possuem uma lista vazia como valor correspondente,
 são as folhas da árvore binária.
-
-
-
-  
-
-   
 '''
 
 grafo = {
-    'A': ['B', 'C'],
-    'B': ['D', 'E'],
-    'C': ['F', 'G'],
-    'D': ['H'],
-    'E': ['I', 'J'],
-    'F': ['K'],
-    'G': ['L'],
-    'H': ['M'],
-    'I': [],
-    'J': ['N'],
-    'K': ['O'],
-    'L': [],
-    'M': [],
-    'N': [],
-    'O': []
+    'London': ['Birmingham', 'Manchester'],
+    'Birmingham': ['Leeds', 'Liverpool'],
+    'Manchester': ['Sheffield', 'Bristol'],
+    'Leeds': ['York'],
+    'Liverpool': ['Edinburgh', 'Glasgow'],
+    'Sheffield': ['Nottingham'],
+    'Bristol': ['Cardiff'],
+    'York': ['Newcastle'],
+    'Edinburgh': [],
+    'Glasgow': ['Inverness'],
+    'Nottingham': [],
+    'Cardiff': [],
+    'Newcastle': [],
+    'Inverness': [],
 }
 
 # Definindo variável que será passada no parâmetro da função "busca_em_largura" como início
-inicio = 'A'
+inicio = 'London'
 
 # Definindo variável que será passada no parâmetro da função "busca_em_largura" como fim
-fim = 'O'
+fim = 'Edinburgh'
 
 caminho = busca_em_largura(grafo, inicio, fim)
 

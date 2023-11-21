@@ -9,13 +9,10 @@ Professor: Daniel Leal
 Matéria: Teoria dos Grafos
 '''
 
-
-
-#implementando funcao principal do algorimto djikstra
+# Implementando função principal do algoritmo Dijkstra
 def dijkstra(grafo, inicio, fim):
     caminhos_mais_curtos = {inicio: (None, 0)}
     no_atual = inicio
-    #lista com itens que não se repetem. Se dermos Type(visitados), ele retorna
     visitados = set()
 
     while no_atual != fim:
@@ -45,33 +42,30 @@ def dijkstra(grafo, inicio, fim):
     caminho = caminho[::-1]
     return caminho
 
-#criando uso do algormtio djikstra
-
+# Criando uso do algoritmo Dijkstra
 
 '''
-
-O grafo abaixo é o grafo em formato de dicionário abaixo. Observe que os numeros representam o peso associado com cada
-conexão, não sendo cosiderados como nós.
-
+O grafo abaixo representa estações ferroviárias do Reino Unido. Os números representam o peso associado com cada
+conexão, não sendo considerados como nós.
 '''
 grafo = {
-    'A': {'B': 1, 'C': 4},
-    'B': {'E': 2, 'G': 5},
-    'C': {'D': 2, 'H': 7},
-    'D': {'E': 3, 'I': 6},
-    'E': {'F': 2, 'J': 4},
-    'F': {'K': 3},
-    'G': {'H': 1},
-    'H': {'I': 4},
-    'I': {'J': 2},
-    'J': {'K': 1, 'L': 3},
-    'K': {'L': 2},
-    'L': {'M': 3},
-    'M': {'N': 4},
-    'N': {'O': 2},
-    'O': {}
+    'London': {'Birmingham': 1, 'Manchester': 4},
+    'Birmingham': {'Leeds': 2, 'Liverpool': 5},
+    'Manchester': {'Sheffield': 2, 'Bristol': 7},
+    'Sheffield': {'Leeds': 3, 'Nottingham': 6},
+    'Leeds': {'York': 2, 'Newcastle': 4},
+    'York': {'Edinburgh': 3},
+    'Liverpool': {'Bristol': 1},
+    'Bristol': {'Nottingham': 4},
+    'Nottingham': {'Newcastle': 2},
+    'Newcastle': {'Edinburgh': 1, 'Glasgow': 3},
+    'Edinburgh': {'Glasgow': 2},
+    'Glasgow': {'Inverness': 3},
+    'Inverness': {'Aberdeen': 4},
+    'Aberdeen': {'Dundee': 2},
+    'Dundee': {}
 }
-inicio = 'A'
-fim = 'O'
+inicio = 'London'
+fim = 'Dundee'
 caminho = dijkstra(grafo, inicio, fim)
 print("Caminho Dijkstra:", caminho)
