@@ -11,10 +11,12 @@ Matéria: Teoria dos Grafos
 
 # Algoritmo DFS (Depth-First Search - Busca em Profundidade)
 def busca_em_profundidade(grafo, inicio, visitados=None):
+    #tratativa para caso seja None no inicio
     if visitados is None:
         visitados = set()
     visitados.add(inicio)
-
+    
+    #recursividade pra verificar vizinhos dos vizinhos e sues filhos (ira marcar visitados)
     for vizinho in grafo[inicio]:
         if vizinho not in visitados:
             busca_em_profundidade(grafo, vizinho, visitados)
