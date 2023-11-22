@@ -11,6 +11,7 @@ Matéria: Teoria dos Grafos
 
 # Definição de função para busca em largura
 def busca_em_largura(grafo, inicio, fim):
+    #inicializa lista
     visitados = set()
     fila = [[inicio]]
     # Trabalhando-se em cima da estrutura de dados de fila
@@ -21,10 +22,12 @@ def busca_em_largura(grafo, inicio, fim):
         # Busca em largura (filhos - filhos)
         if no not in visitados:
             vizinhos = grafo[no]
+            #logica que ira visitar todos os visinhos andes de ir p/ prox. nivel
             for vizinho in vizinhos:
                 novo_caminho = list(caminho)
                 novo_caminho.append(vizinho)
                 fila.append(novo_caminho)
+                #fim: variavel que sera passada na utilização da funcao 
                 if vizinho == fim:
                     return novo_caminho
             # Adiciona nó
